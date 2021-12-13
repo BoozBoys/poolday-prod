@@ -1,17 +1,17 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 3
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+  <ion-header>
     <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
+      <ion-title>Datei Upload</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <ion-input type="file" (change)="upload($event)"></ion-input>
+  <vg-player *ngIf="sourceUrl">
+    <video id="singleVideo" preload="auto" controls>
+      <source [src]="sourceUrl" type="video/mp4">
+    </video>
+  </vg-player>
+  <progress max="100" *ngIf="(uploadProgress | async) !== 100 && (uploadProgress | async) > 0" [value]="(uploadProgress | async)"></progress>
+  <ion-label *ngIf="(uploadProgress | async) !== 100 && (uploadProgress | async) > 0">{{(uploadProgress | async) | number:"1.0-0"}}% / 100%</ion-label>
+
 </ion-content>

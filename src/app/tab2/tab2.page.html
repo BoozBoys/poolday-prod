@@ -1,17 +1,16 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+  <ion-header>
     <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
+      <ion-title>User List</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <ion-list>
+    <ion-card *ngFor="let user of (user$ | async)">
+      <ion-card-header>Nachname: {{user.nachname}}</ion-card-header>
+      <ion-card-header>Vorname: {{user.vorname}}</ion-card-header>
+      <ion-card-header>Dieser User hat die Kennung: "{{user.kennung}}"</ion-card-header>
+    </ion-card>
+  </ion-list>
+
 </ion-content>
